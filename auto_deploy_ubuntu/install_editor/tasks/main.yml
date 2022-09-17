@@ -1,62 +1,49 @@
 ---
-#- name: Installing 
-#  ansible.builtin.apt:
-#   update_cache: true
-#   update_cache_retries: 10
-#   pkg: 
-#   - htop
-#   - tree
-#   - apache2
-#   state: latest
-#  install_recommends: yes
-#  only_upgrade:
-#   fail_on_autoremove: yes
-
-- name: Installing htop
+- name: Installing nano
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: htop
+   name: nano
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing make
+- name: Installing gedit-plugins
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: make
+   name: gedit-plugins
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing git
+- name: Installing visual studio code
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: git
+   name: code
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing fish
+- name: Installing texlive-full
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: fish
+   name: texlive-full
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing tree
+- name: Installing texmaker
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: tree
+   name: texmaker
    state: latest
    install_recommends: yes
    only_upgrade:

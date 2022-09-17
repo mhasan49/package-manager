@@ -8,9 +8,10 @@
 #   - tree
 #   - apache2
 #   state: latest
-#  install_recommends: yes
+#  
 #  only_upgrade:
 #   fail_on_autoremove: yes
+  
 
 - name: Installing htop
   ansible.builtin.apt:
@@ -18,19 +19,19 @@
    update_cache_retries: 10
    name: htop
    state: latest
-   install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
+   
 
 - name: Installing make
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
    name: make
-   state: latest
-   install_recommends: yes
+   state: latest  
    only_upgrade:
    fail_on_autoremove: yes
+   
 
 - name: Installing git
   ansible.builtin.apt:
@@ -38,39 +39,140 @@
    update_cache_retries: 10
    name: git
    state: latest
-   install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
+   
 
 - name: Installing fish
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
    name: fish
-   state: latest
-   install_recommends: yes
+   state: latest   
    only_upgrade:
    fail_on_autoremove: yes
+   
 
 - name: Installing tree
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
    name: tree
-   state: latest
-   install_recommends: yes
+   state: latest  
    only_upgrade:
    fail_on_autoremove: yes
+   
 
-- name: Installing sphinx-docs
+- name: Installing tmux
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: sphinx-docs
-   state: latest
-   install_recommends: yes
+   name: tmux
+   state: latest  
    only_upgrade:
    fail_on_autoremove: yes
+   
+   
+
+- name: Installing blueman
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: blueman
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing cifs-utils
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: cifs-utils
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing curl
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: curl
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing default-jdk
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: default-jdk
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing jd-gui
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: jd-gui
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing net-tools
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: net-tools
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing npm
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: npm
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing openssh-server
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: openssh-server
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing smb-client
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: smb-client
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
+
+- name: Installing unrar
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: unrar
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+   
 
 #- name: Running apt --fix-broken install 
 #  become_user: "{{ lookup('env','USER') }}"
