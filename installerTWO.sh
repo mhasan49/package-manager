@@ -18,17 +18,7 @@
 		exit 1
 	fi
 
-	whiptail --title "[FAIasdsadLED]" --msgbox " Root privileasdges required, please run this script with sudo " 8 78
-
-	PASSWORD=$(whiptail --passwordbox "please enter your root password" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
-    # A trick to swap stdout and stderr.
-	# Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
-	exitstatus=$?
-	if [ $exitstatus == 0 ]; then
-    echo "User selected Ok and entered " $PASSWORD
-	else
-    echo "User selected Cancel."
-	fi
+	whiptail --title "[FAIasdsadLED]" --msgbox " The installer is going to install packages " 8 78
 	
 	OPTION=$(whiptail --separate-output --checklist "Choose options" 10 35 5 \
   	"1" "install_system" ON \
@@ -40,7 +30,7 @@
 	"8" "install_settings" OFF 3>&1 1>&2 2>&3)
 	
 	if [ -z "$OPTION" ]; then
- 	echo "No option was selected (user hit Cancel or unselected all options)"
+ 	echo " "
 	else
 	  for _CHOICE in $OPTION; do
 	{	declare -i count=25
@@ -49,7 +39,7 @@
     case "$_CHOICE" in
     "1")
 	echo 10
-	ansible-playbook --tag prog35 master.yml
+	ansible-playbook --tag prog66 master.yml
 	
 	  ;;
     "2")
@@ -76,9 +66,11 @@
 	  
     esac
 	
+	
 	} | whiptail --gauge "Please wait while we are installing..." 6 50 0
   	done
 	fi
+	whiptail --title "[OK]" --msgbox " Installation, done! " 8 78
    
 
   
