@@ -1,0 +1,95 @@
+---
+#-----------------Using a script file located outside-----------------
+
+#- name: Script module example
+#  become_user: "{{ lookup('env','USER') }}"
+#  script: '{{playbook_dir}}/install_script_hub/tasks/run.sh'
+#  args:
+#   dest: '{{playbook_dir}}/jupyterhub'
+#  register: out
+#- debug: var=out.stdout_lines 
+
+#----------------using Ansible built in module-------------
+
+  - name: Clone jupyterhub
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      git clone https://github.com/mhasan49/jupyterhub.git
+    args:
+     #chdir: '{{playbook_dir}}/jupyterhub'
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: Installing 
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      sudo npm install -g configurable-http-proxy
+    args:
+     chdir: '{{playbook_dir}}/jupyterhub'
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: Creating python3 virtual env 
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      python3 -m venv '{{playbook_dir}}/jupyterhub/venv'
+    args:
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: Activate python3 virtual env 
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      source '{{playbook_dir}}/jupyterhub/venv/bin/activate'
+    args:
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: Installing dev-requirements.txt
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      python3 -m pip install -r dev-requirements.txt
+    args:
+     chdir: '{{playbook_dir}}/jupyterhub'
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: Installing requirements.txt
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      python3 -m pip install -r requirements.txt
+    args:
+     chdir: '{{playbook_dir}}/jupyterhub'
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+  
+  - name: Installing requirements.txt
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      python3 -m pip install --editable .
+    args:
+     chdir: '{{playbook_dir}}/jupyterhub'
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+#  - name: Running jupyterhub
+#    become_user: "{{ lookup('env','USER') }}"
+#    shell: |
+#      bash jupyterhub
+#    args:
+#     chdir: '{{playbook_dir}}/jupyterhub'
+#     executable: /bin/bash
+#    register: out
+#  - debug: var=out.stdout_lines
+
+
+
+ 
+
