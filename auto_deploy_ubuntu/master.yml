@@ -6,9 +6,9 @@
   #pre_task:
   
   roles:
-     - install_system    
-     - install_editor
+     #- install_system    
+     #- install_editor
      - install_media
-     - install_application
-     - install_webbrowser
+     #- install_application
+     #- install_webbrowser
       
