@@ -12,56 +12,45 @@
 #  only_upgrade:
 #   fail_on_autoremove: yes
 
-- name: Installing htop
+- name: Installing vlc
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: htop
+   name: vlc
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing make
+- name: Installing gstreamer1.0-libav
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: make
+   name: gstreamer1.0-libav
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing git
+- name: Installing gstreamer1.0-plugins-bad
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: git
+   name: gstreamer1.0-plugins-bad
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
 
-- name: Installing fish
+- name: Installing ffmpeg
   ansible.builtin.apt:
    update_cache: true
    update_cache_retries: 10
-   name: fish
+   name: ffmpeg
    state: latest
    install_recommends: yes
    only_upgrade:
    fail_on_autoremove: yes
-
-- name: Installing tree
-  ansible.builtin.apt:
-   update_cache: true
-   update_cache_retries: 10
-   name: tree
-   state: latest
-   install_recommends: yes
-   only_upgrade:
-   fail_on_autoremove: yes
-
 
 #- name: Running apt --fix-broken install 
 #  become_user: "{{ lookup('env','USER') }}"

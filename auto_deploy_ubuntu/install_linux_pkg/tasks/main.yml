@@ -121,15 +121,6 @@
    state: latest
    only_upgrade:
    fail_on_autoremove: yes   
-
-- name: Installing jd-gui
-  ansible.builtin.apt:
-   update_cache: true
-   update_cache_retries: 10
-   name: jd-gui
-   state: latest
-   only_upgrade:
-   fail_on_autoremove: yes
    
 
 - name: Installing net-tools
