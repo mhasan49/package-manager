@@ -112,7 +112,15 @@
    state: latest
    only_upgrade:
    fail_on_autoremove: yes
-   
+
+- name: Installing default-jre
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: default-jre
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes   
 
 - name: Installing jd-gui
   ansible.builtin.apt:
@@ -129,6 +137,15 @@
    update_cache: true
    update_cache_retries: 10
    name: net-tools
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing lm-sensors
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: lm-sensors
    state: latest
    only_upgrade:
    fail_on_autoremove: yes
@@ -169,6 +186,15 @@
    update_cache: true
    update_cache_retries: 10
    name: unrar
+   state: latest
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing speedtest-cli
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: speedtest-cli
    state: latest
    only_upgrade:
    fail_on_autoremove: yes
