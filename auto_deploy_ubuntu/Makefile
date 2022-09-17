@@ -1,14 +1,14 @@
 
-all: software install_jupyterhub 
+all: ansible install_software 
 
-software:
+ansible:
 	
-	sudo apt install ansible -y
-	sudo apt install git curl npm pip -y
-	sudo apt install python3.10-venv -y #ubuntu22 for ubuntu 18 or 20 we have a different version 
+	 sudo apt update
+	 sudo apt install software-properties-common
+	 sudo add-apt-repository --yes --update ppa:ansible/ansible
+	 sudo apt install ansible
 	
 	
-
 inventory_file := "[default] \nlocalhost    ansible_connection=local"
 
 ansible_config_file := "[defaults] \ninventory = inventory \nhost_key_checking = False\
@@ -22,17 +22,10 @@ config:
 ping:
 	ansible all -m ping
 
-install_jupyterhub:
+install_software:
 	
 	ansible-playbook  master.yml
 	
-
-install_docker:
-	
-	ansible-playbook  docker.yml
-	#docker ps
-
-
 
 clean:
 	rm inventory *.cfg

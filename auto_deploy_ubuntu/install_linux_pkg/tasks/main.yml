@@ -1,0 +1,95 @@
+---
+#- name: Installing 
+#  ansible.builtin.apt:
+#   update_cache: true
+#   update_cache_retries: 10
+#   pkg: 
+#   - htop
+#   - tree
+#   - apache2
+#   state: latest
+#  install_recommends: yes
+#  only_upgrade:
+#   fail_on_autoremove: yes
+
+- name: Installing htop
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: htop
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing make
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: make
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing git
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: git
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing fish
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: fish
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing tree
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: tree
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing sphinx-docs
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: sphinx-docs
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+#- name: Running apt --fix-broken install 
+#  become_user: "{{ lookup('env','USER') }}"
+#  ansible.builtin.shell: |
+#   sudo apt --fix-broken install
+#  args:
+#    executable: /bin/bash
+#    register: out
+#- debug: 
+#    var: out.stdout_lines
+
+- name: Remove useless packages from the cache
+  ansible.builtin.apt:
+   autoclean: yes
+- name: Run the equivalent of "apt-get clean" as a separate step
+  apt:
+    clean: yes   
+
+
+
+ 
+

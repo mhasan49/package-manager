@@ -1,0 +1,30 @@
+---
+  - name: Installing vlc 
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      sudo apt install vlc
+    args:
+ #    chdir: '{{playbook_dir}}/jupyterhub'
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+    - name: Installing x264 
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      sudo apt install x264
+    args:
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+
+
+
+ 
+
+
+
+
+ 
+
