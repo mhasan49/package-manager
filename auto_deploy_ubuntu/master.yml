@@ -6,9 +6,14 @@
   #pre_task:
   
   roles:
-     #- install_system    
-     #- install_editor
-     - install_media
-     #- install_application
-     #- install_webbrowser
+     - role: install_system
+       tags: prog10    
+     - role: install_editor
+       tags: prog20
+     - role: install_media
+       tags: prog50
+     - role: install_application
+       tag: prog70
+     - role: install_webbrowser
+       tag: prog100
       

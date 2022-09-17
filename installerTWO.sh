@@ -1,6 +1,5 @@
 #!/bin/bash
 {
-
 	aAPT_PREREQS=(
 
 		'whiptail' # G_WHIP
@@ -44,37 +43,44 @@
  	echo "No option was selected (user hit Cancel or unselected all options)"
 	else
 	  for _CHOICE in $OPTION; do
+	{	declare -i count=25
+		export count
+		cd $PWD/auto_deploy_ubuntu
     case "$_CHOICE" in
     "1")
-	sed 's/#- install_system/- install_system/g' $PWD/auto_deploy_ubuntu/master.yml -i
+	echo 10
+	ansible-playbook --tag prog35 master.yml
+	
 	  ;;
     "2")
-      sed 's/#- install_media/- install_media/g' $PWD/auto_deploy_ubuntu/master.yml -i
-      ;;
+    echo $(( $count * 1 ))
+	ansible-playbook --tag prog66 master.yml
+	
+	  ;;
     "3")
-     sed 's/#- install_webbrowser/- install_webbrowser/g' $PWD/auto_deploy_ubuntu/master.yml -i
-      ;;
+    echo $(( $count * 2 ))
+	ansible-playbook --tag prog66 master.yml
+	  ;;
     "4")
-     sed 's/#- install_application/- install_application/g' $PWD/auto_deploy_ubuntu/master.yml -i
-      ;;
+    echo $(( $count * 3 ))
+	ansible-playbook --tag prog66 master.yml
+	  ;;
 	"5")
-     sed 's/#- install_editor/- install_editor/g' $PWD/auto_deploy_ubuntu/master.yml -i
+    echo $(( $count * 4 ))
+	ansible-playbook --tag prog66 master.yml
       ;;  
     *)
       echo "Unsupported item $CHOICE!" >&2
       exit 1
       ;;
+	  
     esac
+	
+	} | whiptail --gauge "Please wait while we are installing..." 6 50 0
   	done
 	fi
-   cd $PWD/auto_deploy_ubuntu
-
-    {
-    make install_software
-    echo "asdas"
-    
-	} | whiptail --gauge "Please wait while we are sleeping..." 6 50 0
    
+
   
    
 
