@@ -1,0 +1,57 @@
+---
+#- name: Installing 
+#  ansible.builtin.apt:
+#   update_cache: true
+#   update_cache_retries: 10
+#   pkg: 
+#   - htop
+#   - tree
+#   - apache2
+#   state: latest
+#  install_recommends: yes
+#  only_upgrade:
+#   fail_on_autoremove: yes
+
+- name: Installing chrome-remote-desktop
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: chrome-remote-desktop
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+- name: Installing google-chrome-stable
+  ansible.builtin.apt:
+   update_cache: true
+   update_cache_retries: 10
+   name: google-chrome-stable
+   state: latest
+   install_recommends: yes
+   only_upgrade:
+   fail_on_autoremove: yes
+
+
+
+#- name: Running apt --fix-broken install 
+#  become_user: "{{ lookup('env','USER') }}"
+#  ansible.builtin.shell: |
+#   sudo apt --fix-broken install
+#  args:
+#    executable: /bin/bash
+#    register: out
+#- debug: 
+#    var: out.stdout_lines
+
+- name: Remove useless packages from the cache
+  ansible.builtin.apt:
+   autoclean: yes
+- name: Run the equivalent of "apt-get clean" as a separate step
+  apt:
+    clean: yes   
+
+
+
+ 
+
