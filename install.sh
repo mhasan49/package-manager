@@ -39,7 +39,7 @@
 	  for _CHOICE in $OPTION; do
 	{	declare -i count=25
 		export count
-		cd $PWD/auto_deploy_ubuntu
+		cd $PWD/ubuntu
     case "$_CHOICE" in
     "1")
 	echo 10
