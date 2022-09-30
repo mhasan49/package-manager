@@ -3,8 +3,7 @@
   hosts: all
   become: true
   gather_facts: yes
-  #pre_task:
-  
+
   roles:
      - role: install_system
        tags: prog10    
@@ -16,4 +15,5 @@
        tag: prog70
      - role: install_webbrowser
        tag: prog100
-      
+     - role: install_cuda
+       tag: prog120

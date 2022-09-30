@@ -1,0 +1,25 @@
+---
+  - name: Removing Nvidia
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      echo "***************Removing Nvidia***************"
+      apt purge -y nvidia*
+      apt remove -y nvidia-*
+      rm /etc/apt/sources.list.d/cuda*
+      apt autoremove -y && apt autoclean -y
+      rm -rf /usr/local/cuda*
+    args:
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+
+  - name: Upgrading system
+    become_user: "{{ lookup('env','USER') }}"
+    shell: |
+      apt update
+      apt upgrade -y
+    args:
+     executable: /bin/bash
+    register: out
+  - debug: var=out.stdout_lines
+

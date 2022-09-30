@@ -1,8 +1,17 @@
 #!/bin/bash
-{
+{	if (( $UID ))
+	then
+		whiptail --title "[FAILED]" --msgbox " Root privileges required, please run this script with sudo " 8 78
+		exit 1
+	fi
 	aAPT_PREREQS=(
 
-		'whiptail' # G_WHIP
+		'whiptail' 
+		'ansible' 
+		'git' 
+		'curl' 
+		'wget' 
+		'ansible-core' 
 	)
 	for i in "${aAPT_PREREQS[@]}"
 	do
@@ -12,11 +21,36 @@
 	done
 	unset -v aAPT_PREREQS
 
-	if (( $UID ))
+	# Set Git owner
+	GITOWNER=${GITOWNER:-mhasan49}
+
+	# Select Git branch
+	if ! [[ $GITBRANCH =~ ^(master|beta|dev)$ ]]
 	then
-		whiptail --title "[FAILED]" --msgbox " Root privileges required, please run this script with sudo " 8 78
+		aWHIP_BRANCH=(
+
+			'main' ': Stable release branch (recommended)'
+			'beta' ': Public beta testing branch'
+			'dev' ': Unstable development branch'
+		)
+		if ! GITBRANCH=$(whiptail --title "$G_PROGRAM_NAME" --menu 'Please select the Git branch the installer should use:' --default-item 'master' --ok-button 'Ok' --cancel-button 'Exit' --backtitle "$G_PROGRAM_NAME" 12 80 3 "${aWHIP_BRANCH[@]}" 3>&1 1>&2 2>&3-)
+		then
+			echo -e '[ INFO ] Exit selected. Aborting...\n'
+			exit 0
+		fi
+		unset -v aWHIP_BRANCH
+	fi
+	echo "[ INFO ] Selected Git branch: $GITOWNER/$GITBRANCH"
+
+	# Select Git repository
+	if ! curl -sSfL "https://raw.githubusercontent.com/$GITOWNER/ubuntu-setup/$GITBRANCH/install.sh" -o installer
+	then			
+		echo -e '[FAILED] Unable to download . Aborting...\n'
 		exit 1
 	fi
+
+	# Download the git folder
+  
 
 	whiptail --title "[FAIasdsadLED]" --msgbox " The installer is going to install packages " 8 78
 	
@@ -65,13 +99,13 @@
       ;;
 	  
     esac
-	
-	
+
 	} | whiptail --gauge "Please wait while we are installing..." 6 50 0
   	done
 	fi
 	whiptail --title "[OK]" --msgbox " Installation, done! " 8 78
-   
+    
+	
 
   
    
