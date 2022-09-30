@@ -43,25 +43,25 @@
     case "$_CHOICE" in
     "1")
 	echo 10
-	ansible-playbook --tag prog66 master.yml
+	ansible-playbook --tag prog10 master.yml
 	
 	  ;;
     "2")
     echo $(( $count * 1 ))
-	ansible-playbook --tag prog66 master.yml
+	ansible-playbook --tag prog20 master.yml
 	
 	  ;;
     "3")
     echo $(( $count * 2 ))
-	ansible-playbook --tag prog66 master.yml
+	ansible-playbook --tag prog50 master.yml
 	  ;;
     "4")
     echo $(( $count * 3 ))
-	ansible-playbook --tag prog66 master.yml
+	ansible-playbook --tag prog70 master.yml
 	  ;;
 	"5")
     echo $(( $count * 4 ))
-	ansible-playbook --tag prog66 master.yml
+	ansible-playbook --tag prog100 master.yml
       ;;  
     *)
       echo "Unsupported item $CHOICE!" >&2
