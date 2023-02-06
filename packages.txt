@@ -17,7 +17,8 @@ npm
 speedtest-cli
 unrar
 
-----------------editors
+
+-------------------editors
 code
 nano
 gedit-plugins
