@@ -1,7 +1,7 @@
 ---
 - name: Installing nano
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: nano
    state: latest
@@ -11,7 +11,7 @@
 
 - name: Installing gedit-plugins
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: gedit-plugins
    state: latest
@@ -21,7 +21,7 @@
 
 - name: Installing visual studio code
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: code
    state: latest
@@ -31,7 +31,7 @@
 
 - name: Installing texlive-full
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: texlive-full
    state: latest
@@ -41,7 +41,7 @@
 
 - name: Installing texmaker
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: texmaker
    state: latest

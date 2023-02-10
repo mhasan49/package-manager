@@ -1,7 +1,7 @@
 ---
 #- name: Installing 
 #  ansible.builtin.apt:
-#   update_cache: true
+#   #update_cache: true
 #   update_cache_retries: 10
 #   pkg: 
 #   - htop
@@ -14,7 +14,7 @@
 
 - name: Installing chrome-remote-desktop
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: chrome-remote-desktop
    state: latest
@@ -24,7 +24,7 @@
 
 - name: Installing google-chrome-stable
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: google-chrome-stable
    state: latest

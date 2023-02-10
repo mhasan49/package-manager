@@ -1,7 +1,7 @@
 ---
 - name: Installing octave
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: octave
    state: latest
@@ -11,7 +11,7 @@
 
 - name: Installing gnuplot
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: gnuplot
    state: latest
@@ -21,7 +21,7 @@
 
 - name: Installing gfortran
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: gfortran
    state: latest
@@ -31,7 +31,7 @@
 
 - name: Installing gigolo
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: gigolo
    state: latest
@@ -41,7 +41,7 @@
 
 - name: Installing tailscale
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: tailscale
    state: latest
@@ -51,7 +51,7 @@
 
 - name: Installing timeshift
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: timeshift
    state: latest
@@ -61,7 +61,7 @@
 
 - name: Installing zoom
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: zoom
    state: latest
@@ -71,7 +71,7 @@
 
 - name: Installing wps-office
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: wps-office
    state: latest

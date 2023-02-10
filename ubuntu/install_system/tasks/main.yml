@@ -1,7 +1,7 @@
 ---
 #- name: Installing 
 #  ansible.builtin.apt:
-#   update_cache: true
+#   #update_cache: true
 #   update_cache_retries: 10
 #   pkg: 
 #   - htop
@@ -15,8 +15,8 @@
 
 - name: Installing htop
   ansible.builtin.apt:
-   update_cache: true
-   update_cache_retries: 10
+   ##update_cache: true
+   #update_cache_retries: 10
    name: htop
    state: latest
    only_upgrade:
@@ -25,7 +25,7 @@
 
 - name: Installing make
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: make
    state: latest  
@@ -35,7 +35,7 @@
 
 - name: Installing git
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: git
    state: latest
@@ -45,7 +45,7 @@
 
 - name: Installing fish
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: fish
    state: latest   
@@ -55,7 +55,7 @@
 
 - name: Installing tree
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: tree
    state: latest  
@@ -65,7 +65,7 @@
 
 - name: Installing tmux
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: tmux
    state: latest  
@@ -76,7 +76,7 @@
 
 - name: Installing blueman
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: blueman
    state: latest
@@ -86,7 +86,7 @@
 
 - name: Installing cifs-utils
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: cifs-utils
    state: latest
@@ -96,7 +96,7 @@
 
 - name: Installing curl
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: curl
    state: latest
@@ -106,7 +106,7 @@
 
 - name: Installing default-jdk
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: default-jdk
    state: latest
@@ -115,7 +115,7 @@
 
 - name: Installing default-jre
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: default-jre
    state: latest
@@ -125,7 +125,7 @@
 
 - name: Installing net-tools
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: net-tools
    state: latest
@@ -134,7 +134,7 @@
 
 - name: Installing lm-sensors
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: lm-sensors
    state: latest
@@ -144,7 +144,7 @@
 
 - name: Installing npm
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: npm
    state: latest
@@ -154,7 +154,7 @@
 
 - name: Installing openssh-server
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: openssh-server
    state: latest
@@ -164,7 +164,7 @@
 
 - name: Installing smb-client
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: smb-client
    state: latest
@@ -174,7 +174,7 @@
 
 - name: Installing unrar
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: unrar
    state: latest
@@ -183,7 +183,7 @@
 
 - name: Installing speedtest-cli
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: speedtest-cli
    state: latest
@@ -192,7 +192,7 @@
 
 - name: Installing bleachbit
   ansible.builtin.apt:
-   update_cache: true
+   #update_cache: true
    update_cache_retries: 10
    name: bleachbit
    state: latest
@@ -210,12 +210,12 @@
 #- debug: 
 #    var: out.stdout_lines
 
-- name: Remove useless packages from the cache
-  ansible.builtin.apt:
-   autoclean: yes
-- name: Run the equivalent of "apt-get clean" as a separate step
-  apt:
-    clean: yes   
+- #name: Remove useless packages from the cache
+  #ansible.builtin.apt:
+   #autoclean: true
+- #name: Run the equivalent of "apt-get clean" as a separate step
+  #apt:
+  #  clean: true   
 
 
 
