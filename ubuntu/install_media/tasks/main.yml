@@ -1,0 +1,79 @@
+---
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  register: update_cache
+  ignore_errors: true
+  # tags: system
+
+# - debug: 
+#     var: update_cache
+#   # tags: system  
+
+- name: Remove outdated packages
+  ansible.builtin.apt:
+    autoremove: yes
+  register: auto_remove  
+  ignore_errors: true
+  # tags: system
+
+# - debug: 
+#     var: auto_remove
+
+- name: Autoclean
+  ansible.builtin.apt:
+    autoclean: yes
+  register: auto_clean  
+  ignore_errors: true 
+
+- debug: 
+    var: auto_clean
+
+- name: Run a Python script "extract.py" to extract package names
+  ansible.builtin.shell:
+    cmd: python3 extract.py
+    chdir: "../scripts"
+    executable: /bin/bash
+  register: extract_script_output
+
+- name: Read package names from file
+  shell: |
+    cat '../scripts/media.txt' 
+  args:
+    chdir: "{{playbook_dir}}"
+    executable: /bin/bash  
+  register: packages_file_content
+  
+- name: Show package names
+  ansible.builtin.debug:
+    msg: "{{ packages_file_content.stdout_lines }}"
+
+- name: Install packages
+  ansible.builtin.apt:
+    update_cache_retries: 5
+    name: "{{ item }}"
+    state: latest
+    fail_on_autoremove: yes
+  loop: "{{ packages_file_content.stdout_lines }}"
+  register: install_packages
+
+# - debug: 
+#     var: install_packages
+
+- name: Show information about installed packages
+  ansible.builtin.shell:
+    dpkg -l | grep -E 'ii  {{ item }}'
+  loop: "{{ packages_file_content.stdout_lines }}"
+  register: installed_packages
+
+# - name: Show installed packages
+#   ansible.builtin.debug:
+#     var: installed_packages
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+name: CI to check if the application can be installed 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  application:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Test echo command
+      run: echo "hello world"
+
+    - name: Check if install.sh exists
+      run: ls install.sh || exit 1
+
+    - name: Check if makefile exists
+      run: ls ubuntu/Makefile || exit 1
+
+    - name: cd  to ubuntu directory
+      run: |
+        cd ubuntu
+        make install_application
+   
+

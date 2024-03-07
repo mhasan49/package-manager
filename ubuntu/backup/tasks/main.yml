@@ -1,0 +1,9 @@
+---
+- name: Get list of installed packages
+  ansible.builtin.command: dpkg-query -f '${Package}\n' -W
+  register: installed_packages_output
+
+- name: Write installed packages to a file
+  ansible.builtin.copy:
+    content: "{{ installed_packages_output.stdout }}"
+    dest: "../backup.txt"

@@ -1,0 +1,15 @@
+---
+- name: Playbook to run apt install commands
+  hosts: all
+  become: true
+  gather_facts: yes
+
+  roles:
+    - { role: install_system, tags: ["prog10"] }
+    - { role: install_editor, tags: ["prog20"] }
+    - { role: install_media, tags: ["prog30"] }
+    - { role: install_application, tags: ["prog40"] }
+    - { role: install_webbrowser, tags: ["prog50"] }
+    - { role: backup, tags: ["prog60"] }
+    - { role: restore, tags: ["prog70"] }      
+

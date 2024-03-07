@@ -1,0 +1,47 @@
+name: backup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Test echo command
+        run: echo "hello world"
+
+      - name: Check if install.sh exists
+        run: ls install.sh || exit 1
+
+      - name: Check if makefile exists
+        run: ls ubuntu/Makefile || exit 1
+
+      - name: cd to ubuntu directory and backup
+        run: |
+          cd ubuntu
+          make backup
+
+  # restore:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Test echo command
+  #       run: echo "hello world"
+
+  #     - name: Check if install.sh exists
+  #       run: ls install.sh || exit 1
+
+  #     - name: Check if makefile exists
+  #       run: ls ubuntu/Makefile || exit 1
+
+  #     - name: cd to ubuntu directory and restore
+  #       run: |
+  #         cd ubuntu
+  #         make restore

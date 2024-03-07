@@ -1,0 +1,11 @@
+site_name: package-manager
+
+nav:
+  - Home: README.md
+  - install.sh: install_sh.md
+  - main.yml: main_yml.md
+  - packages.txt: packages_txt.md
+  - Makefile: Makefile.md
+
+theme:
+  name: mkdocs
