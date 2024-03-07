@@ -10,7 +10,7 @@
   <p align="center">
     Customized ansible-scripts for installing packages on Debian/Ubuntu systems. 
     <br />
-    <a href="https://github.com/mhasan49/package-manager/tree/main/docs/docs"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/mhasan49/package-manager/tree/v1.0/docs/docs"><strong>Explore the docs »</strong></a>
     <br />
   </p>
 </div>
